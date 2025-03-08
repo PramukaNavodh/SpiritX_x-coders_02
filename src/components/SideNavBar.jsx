@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const SideNavbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -26,21 +27,21 @@ const SideNavbar = () => {
     <div className="fixed top-0 left-0 h-screen bg-gray-800 text-white">
       <button className="p-4 focus:outline-none" onClick={toggleNavbar}>
         <img
-          src={isExpanded ? "/more-icon.png" : "/more-icon.png"}
+          src={isExpanded ? "/more-icon.png" : "/more-icons.png"}
           alt="Toggle"
           className="h-6 w-6"
         />
       </button>
 
       <div
-        ref={navbarRef} // Attach the ref to the navbar
+        ref={navbarRef} 
         className={`transition-all duration-300 ease-in-out ${
           isExpanded ? "w-64" : "w-16"
         } overflow-hidden`}
       >
         <div className="flex flex-col h-full p-4">
-          <a
-            href="#"
+          <Link
+            href="/"
             className="mb-4 flex items-center hover:bg-gray-700 p-2 rounded"
           >
             {!isExpanded && (
@@ -52,9 +53,9 @@ const SideNavbar = () => {
               />
             )}
             {isExpanded && "Home"}
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/allplayers"
             className="mb-4 flex items-center hover:bg-gray-700 p-2 rounded"
           >
             {!isExpanded && (
@@ -66,7 +67,7 @@ const SideNavbar = () => {
               />
             )}
             {isExpanded && "View Players"}
-          </a>
+          </Link>
           <a
             href="#"
             className="mb-4 flex items-center hover:bg-gray-700 p-2 rounded"

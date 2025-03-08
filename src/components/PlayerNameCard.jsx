@@ -11,7 +11,7 @@ const PlayerNameCard = () => {
           <h2 className="text-3xl text-white"> Batsman</h2>
 
           <hr className="my-4 border-t border-white" />
-          <p className="mt-4 text-lg leading-relaxed">
+          <p className="mt-4 text-lg leading-relaxed text-white">
           University of Visual and Performing Arts
           </p>
           

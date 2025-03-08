@@ -1,10 +1,10 @@
 import Image from "next/image";
-import PlayerCard from "./components/PlayerCard";
+import SideNavbar from "@/components/SideNavBar";
 
 export default function Home() {
   return (
     <div>
-      <PlayerCard />
+      <SideNavbar/>
     </div>
   );
 }
