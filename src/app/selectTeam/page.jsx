@@ -5,7 +5,7 @@ import Title from "../../components/Title";
 import PlayerCard from "@/components/PlayerCard";
 
 const SelectTeam = () => {
-  const player = [
+  const players = [
     {
       Name: "Chamika Chandimal",
       University: "University of the Visual & Performing Arts",
@@ -62,103 +62,123 @@ const SelectTeam = () => {
       RunsConceded: 528,
     },
   ];
-  const [showFilter, setShowFilter] = useState(false);
-  const [category, setCategory] = useState([]);
-  //   const [player, setPlayer] = useState([]);
 
-  //   useEffect(() => {
-  //     setPlayer();
-  //   });
+  const [showFilter, setShowFilter] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [selectedPlayers, setSelectedPlayers] = useState([]);
 
   const toggleCategory = (e) => {
-    if (category.includes(e.target.value)) {
-      setCategory((prev) => prev.filter((item) => item !== e.target.value));
+    if (categories.includes(e.target.value)) {
+      setCategories((prev) => prev.filter((item) => item !== e.target.value));
     } else {
-      setCategory((prev) => [...prev, e.target.value]);
+      setCategories((prev) => [...prev, e.target.value]);
+    }
+  };
+
+  const filteredPlayers = categories.length
+    ? players.filter((p) => categories.includes(p.Category))
+    : players;
+
+  const handlePlayerClick = (player) => {
+    if (selectedPlayers.some((p) => p.Name === player.Name)) {
+      setSelectedPlayers((prev) => prev.filter((p) => p.Name !== player.Name));
+    } else {
+      setSelectedPlayers((prev) => [...prev, player]);
     }
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
-      {/* Left side- filter */}
-      <div className="min-w-60">
-        <p
-          onClick={() => setShowFilter(!showFilter)}
-          className="my-2 text-xl flex cursor-pointer items-center gap-2"
-        >
-          SELECT YOUR TEAM
-          <img
-            className={`h-3 sm:hidden ${showFilter ? "rotate-90" : " "}`}
-            src={"./dropdown_icon.png"}
-            alt=""
-          />
-        </p>
-        <div
-          className={`border border-gray-300 pl-5 py-3 mt-6 ${
-            showFilter ? "" : "hidden"
-          } sm:block`}
-        >
-          <p className="mb-3 text-base font-medium">ROLES</p>
+    <div>
+      <div className="justify-center text-center text-3xl mt-5">
+        <Title text1={"SELECT YOUR"} text2={"TEAM"} />
+      </div>
+      <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 ">
+        <div className="min-w-60">
+          <p
+            onClick={() => setShowFilter(!showFilter)}
+            className="my-2 text-xl flex cursor-pointer items-center gap-2"
+          >
+            FILTERS{" "}
+            <img
+              className={`h-3 sm:hidden ${showFilter ? "rotate-90" : " "}`}
+              src={"./dropdown_icon.png"}
+              alt=""
+            />
+          </p>
+          <div
+            className={`border border-gray-300 pl-5 py-3 mt-6 ${
+              showFilter ? "" : "hidden"
+            } sm:block`}
+          >
+            <p className="mb-3 text-base font-medium">ROLES</p>
 
-          <div className="flex flex-col gap-2 text-sm font-medium text-black">
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Batsman"}
-                onChange={toggleCategory}
-              />
-              Batsman
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"Bowler"}
-                onChange={toggleCategory}
-              />
-              Bowlers
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value={"AllRounder"}
-                onChange={toggleCategory}
-              />
-              All Rounder
-            </p>
+            <div className="flex flex-col gap-2 text-sm font-medium text-black">
+              <p className="flex gap-2">
+                <input
+                  className="w-3"
+                  type="checkbox"
+                  value={"Batsman"}
+                  onChange={toggleCategory}
+                />
+                Batsman
+              </p>
+              <p className="flex gap-2">
+                <input
+                  className="w-3"
+                  type="checkbox"
+                  value={"Bowler"}
+                  onChange={toggleCategory}
+                />
+                Bowlers
+              </p>
+              <p className="flex gap-2">
+                <input
+                  className="w-3"
+                  type="checkbox"
+                  value={"All-Rounder"}
+                  onChange={toggleCategory}
+                />
+                All Rounder
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex-1">
-        <div className="flex justify-between text-base sm:text-2xl mb-4 ">
-        <Title text2={"PLAYERS"} />
+        <div className="flex-1">
+          <div className="flex justify-between text-base sm:text-2xl mb-4 ">
+            <Title text2={"PLAYERS"} />
+          </div>
+          <div className="cursor-pointer">
+            {filteredPlayers.length > 0 ? (
+              filteredPlayers.map((item, index) => (
+                <div key={index} onClick={() => handlePlayerClick(item)}>
+                  <PlayerCard
+                    name={item.Name}
+                    university={item.University}
+                    price={item.Wickets}
+                  />
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-500">
+                No players found for the selected category.
+              </p>
+            )}
+          </div>
         </div>
-        {/* Map Product */}
-        <div className="cursor-pointer">
-          {player.map((item, index) => (
-            <PlayerCard
-              key={index}
-              name={item.Name}
-              university={item.University}
-              price={item.Wickets}
-            />
-          ))}
-        </div>
-      </div>
 
-      <div className="flex-1">
-        <div className="flex justify-between text-base sm:text-2xl mb-4 ">
-          <Title text1={"YOUR"} text2={"TEAM"}/>
-        </div>
-        {/* Map Product */}
-        <div className="">
-          {player.map((item, index) => (
-            <div key={index}>
-              <p> {item.Name}</p>
-            </div>
-          ))}
+        <div className="flex-1">
+          <div className="flex justify-between text-base sm:text-2xl mb-4 ">
+            <Title text1={"YOUR"} text2={"TEAM"} />
+          </div>
+          <div>
+            {selectedPlayers.map((item, index) => (
+              <div key={index} className="">
+                <p>
+                  {index + 1}. {item.Name} - {item.Wickets}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
