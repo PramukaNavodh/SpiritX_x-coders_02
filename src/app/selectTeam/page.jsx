@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import PlayerCard from "../components/PlayerCard";
 import Title from "../../components/Title";
+import PlayerCard from "@/components/PlayerCard";
 
-const selectTeam = () => {
+const SelectTeam = () => {
   const player = [
     {
       Name: "Chamika Chandimal",
@@ -165,4 +165,4 @@ const selectTeam = () => {
   );
 };
 
-export default selectTeam;
+export default SelectTeam;
