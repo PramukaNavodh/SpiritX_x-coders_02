@@ -68,8 +68,8 @@ const SideNavbar = () => {
             )}
             {isExpanded && "View Players"}
           </Link>
-          <a
-            href="#"
+          <Link
+            href="./selectTeam"
             className="mb-4 flex items-center hover:bg-gray-700 p-2 rounded"
           >
             {!isExpanded && (
@@ -82,7 +82,7 @@ const SideNavbar = () => {
               />
             )}
             {isExpanded && "Select Your Team"}
-          </a>
+          </Link>
           <a
             href="#"
             className="mb-4 flex items-center hover:bg-gray-700 p-2 rounded"
