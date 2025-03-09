@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Title from "../../components/Title";
 import PlayerCard from "@/components/PlayerCard";
 
@@ -80,10 +80,20 @@ const SelectTeam = () => {
     : players;
 
   const handlePlayerClick = (player) => {
-    if (selectedPlayers.some((p) => p.Name === player.Name)) {
+    const totalWicketsIfAdded =
+      selectedPlayers.reduce((total, p) => total + p.Wickets, 0) +
+      player.Wickets;
+
+    const isPlayerAlreadySelected = selectedPlayers.some(
+      (p) => p.Name === player.Name
+    );
+
+    if (isPlayerAlreadySelected) {
       setSelectedPlayers((prev) => prev.filter((p) => p.Name !== player.Name));
-    } else {
+    } else if (totalWicketsIfAdded <= 40) {
       setSelectedPlayers((prev) => [...prev, player]);
+    } else {
+      alert("Cannot add player: Remaining purse is insufficient !!!");
     }
   };
 
@@ -93,10 +103,10 @@ const SelectTeam = () => {
         <Title text1={"SELECT YOUR"} text2={"TEAM"} />
       </div>
       <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 ">
-        <div className="min-w-60">
+        <div className="min-w-60 ml-1">
           <p
             onClick={() => setShowFilter(!showFilter)}
-            className="my-2 text-xl flex cursor-pointer items-center gap-2"
+            className="my-2 text-xl flex cursor-pointer items-center gap-2 text-white"
           >
             FILTERS{" "}
             <img
@@ -110,9 +120,9 @@ const SelectTeam = () => {
               showFilter ? "" : "hidden"
             } sm:block`}
           >
-            <p className="mb-3 text-base font-medium">ROLES</p>
+            <p className="mb-3 text-base font-medium text-white">ROLES</p>
 
-            <div className="flex flex-col gap-2 text-sm font-medium text-black">
+            <div className="flex flex-col gap-2 text-sm font-medium text-white">
               <p className="flex gap-2">
                 <input
                   className="w-3"
@@ -166,18 +176,48 @@ const SelectTeam = () => {
           </div>
         </div>
 
-        <div className="flex-1">
-          <div className="flex justify-between text-base sm:text-2xl mb-4 ">
+        <div className="flex-1 border-l pl-2 text-white">
+          <div className="flex justify-between text-base sm:text-2xl mb-4">
             <Title text1={"YOUR"} text2={"TEAM"} />
           </div>
-          <div>
+          <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-4 font-semibold">
+              <p>Player Name</p>
+              <p>Price</p>
+            </div>
+
             {selectedPlayers.map((item, index) => (
-              <div key={index} className="">
+              <div key={index} className="grid grid-cols-2 gap-4">
                 <p>
-                  {index + 1}. {item.Name} - {item.Wickets}
+                  {index + 1}. {item.Name}
                 </p>
+                <p>{item.Wickets}</p>
               </div>
             ))}
+
+            {selectedPlayers.length > 0 && (
+              <>
+                <div className="grid grid-cols-2 gap-4 border-t pt-2 font-semibold">
+                  <p>Purse Spending</p>
+                  <p>
+                    {selectedPlayers.reduce(
+                      (total, player) => total + player.Wickets,
+                      0
+                    )}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 font-semibold">
+                  <p>Purse Remaining</p>
+                  <p>
+                    {200 -
+                      selectedPlayers.reduce(
+                        (total, player) => total + player.Wickets,
+                        0
+                      )}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
