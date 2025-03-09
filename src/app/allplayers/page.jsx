@@ -1,9 +1,10 @@
-import SideNavbar from "@/components/SideNavBar";
+import Banner from "@/components/Banner";
 
 export default function AllPlayers() {
     return (
       <div>
-        <SideNavbar/>
+        
+        
       </div>
     );
   }

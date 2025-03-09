@@ -1,10 +1,9 @@
-import Image from "next/image";
-import SideNavbar from "@/components/SideNavBar";
+"user client";
 
-export default function Home() {
+export default function Playerview() {
   return (
     <div>
-      <SideNavbar/>
+        
     </div>
   );
 }

@@ -24,7 +24,7 @@ const SideNavbar = () => {
   }, [navbarRef]);
 
   return (
-    <div className="fixed top-0 left-0 h-screen bg-gray-800 text-white">
+    <div className="fixed top-0 left-0 h-screen bg-gray-800 text-white z-50">
       <button className="p-4 focus:outline-none" onClick={toggleNavbar}>
         <img
           src={isExpanded ? "/more-icon.png" : "/more-icons.png"}
