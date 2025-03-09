@@ -3,3 +3,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+@layer utilities {
+    .btn-primary {
+        @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-sm transition-colors;
+    }
+
+    .btn-primary:hover {
+        @apply bg-blue-700;
+    }
+
+    .btn-secondary {
+        @apply bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg shadow-sm transition-colors;
+    }
+
+    .btn-secondary:hover {
+        @apply bg-gray-300;
+    }
+
+    .btn-danger {
+        @apply bg-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-sm transition-colors;
+    }
+
+    .btn-danger:hover {
+        @apply bg-red-700;
+    }
+
+    .card {
+        @apply bg-white rounded-lg shadow-md p-6 mb-6;
+    }
+
+    .heading {
+        @apply text-2xl font-bold mb-4 text-gray-800;
+    }
+
+    .subheading {
+        @apply text-lg font-medium mb-2 text-gray-600;
+    }
+
+    .text-muted {
+        @apply text-gray-500;
+    }
+
+    .loading {
+        @apply animate-pulse bg-gray-200 rounded;
+    }
+}
