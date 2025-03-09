@@ -14,7 +14,7 @@ function Banner({ backgroundImage }) {
           CRICKET STARS ARENA
           </h2>
           <h1 className="text-white text-5xl font-bold">
-          DREAM. PICK. PLAY.
+          ALL THE BEST PLAYERS IN ONE PLACE
           </h1>
         </div>
 
