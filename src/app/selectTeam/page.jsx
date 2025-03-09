@@ -180,10 +180,12 @@ const SelectTeam = () => {
             )}
           </div>
         </div>
-
         <div className="flex-1 border-l pl-2 text-white">
           <div className="flex justify-between text-base sm:text-2xl mb-4">
             <Title text1={"YOUR"} text2={"TEAM"} />
+            <p className="text-sm text-gray-400">
+              {selectedPlayers.length} / 11 players selected
+            </p>
           </div>
           <div className="space-y-2">
             <div className="grid grid-cols-2 gap-4 font-semibold">
