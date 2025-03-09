@@ -112,7 +112,7 @@ const SideNavbar = () => {
             {isExpanded && "Budget"}
           </a>
           <a
-            href="#"
+            href="./Leaderboard"
             className="mb-4 flex items-center hover:bg-gray-700 p-2 rounded"
           >
             {!isExpanded && (
