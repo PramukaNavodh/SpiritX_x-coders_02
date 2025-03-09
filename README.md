@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fantasy Cricket League
+
+A fantasy cricket platform where users can build their dream teams from real university players, analyze statistics, and compete for the top spot on the leaderboard.
+
+## Features
+
+- **Team Management**: Create and manage your fantasy cricket team
+- **Player Statistics**: View detailed player statistics and performance metrics
+- **Leaderboard**: Compete against other users and climb the leaderboard
+- **Chatbot Integration**: Get help with the Spiriter chatbot
+- **Admin Panel**: Manage players and view tournament statistics
+- **Real-time Updates**: Get live updates using Socket.IO
+
+## Technologies
+
+- **Next.js**: React framework for server-side rendering and static site generation
+- **MongoDB**: Database for storing user data, teams, and player statistics
+- **Socket.IO**: Real-time bidirectional communication
+- **Tailwind CSS**: Utility-first CSS framework
+- **Gemini API**
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v14 or higher)
+- MongoDB
+- Git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/PramukaNavodh/SpiritX_x-coders_02.git
+   cd SpiritX_x-coders_02
+   ```
+2. Install the npm
+   ```bash
+   npm install
+   ```
+3. Add .env file
+   ``` bash
+   MONGODB_URI=your_mongodb_connection_string
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
