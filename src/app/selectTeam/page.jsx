@@ -7,6 +7,7 @@ import PlayerCard from "@/components/PlayerCard";
 const SelectTeam = () => {
   const players = [
     {
+      Id: 1,
       Name: "Chamika Chandimal",
       University: "University of the Visual & Performing Arts",
       Category: "Batsman",
@@ -18,6 +19,7 @@ const SelectTeam = () => {
       RunsConceded: 21,
     },
     {
+      Id: 2,
       Name: "Dimuth Dhananjaya",
       University: "University of the Visual & Performing Arts",
       Category: "All-Rounder",
@@ -29,6 +31,7 @@ const SelectTeam = () => {
       RunsConceded: 240,
     },
     {
+      Id: 3,
       Name: "Avishka Mendis",
       University: "Eastern University",
       Category: "All-Rounder",
@@ -40,6 +43,7 @@ const SelectTeam = () => {
       RunsConceded: 210,
     },
     {
+      Id: 4,
       Name: "Danushka Kumara",
       University: "University of the Visual & Performing Arts",
       Category: "Batsman",
@@ -51,6 +55,7 @@ const SelectTeam = () => {
       RunsConceded: 35,
     },
     {
+      Id: 5,
       Name: "Chaturanga Gunathilaka",
       University: "University of Moratuwa",
       Category: "Bowler",
