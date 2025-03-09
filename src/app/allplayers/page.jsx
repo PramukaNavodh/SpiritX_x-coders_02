@@ -1,3 +1,5 @@
+"use client";
+
 import Banner from "@/components/Banner";
 import PlayerInfoCardUI from "@/components/PlayerInfoCard";
 
